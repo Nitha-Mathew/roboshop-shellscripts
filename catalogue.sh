@@ -15,3 +15,10 @@ go mod tidy
 CGO_ENABLED=0 go build -o /app/catalogue .
 chown -R appuser:appuser /app
 chmod o-rwx /app -R
+
+systemctl daemon-reload
+systemctl enable catalogue
+systemctl start catalogue
+
+systemctl status catalogue
+journalctl -u catalogue -f
